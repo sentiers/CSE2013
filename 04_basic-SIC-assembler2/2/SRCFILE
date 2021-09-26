@@ -1,0 +1,11 @@
+prog2    start   1000                                            
+sec      ldx     zero                                            
+loop     ldch    str1,x                                          
+         stch    str2,x                                          
+         tix     count                                           
+         jlt     loop                                            
+str1     byte    c'string data.'                                 
+str2     resb    12                                              
+zero     word    0                                               
+count    word    12                                              
+         end     sec                                             

@@ -25,7 +25,7 @@ int main() {
 		string code;
 		getline(fin, str);
 		key = str.substr(0, str.find(",")); // split
-		code = str.substr(str.find(",") + 1, str.length());
+		code = str.substr(str.find(",") + 1);
 		m.insert(make_pair(key, code)); // insert key and code
 	}
 

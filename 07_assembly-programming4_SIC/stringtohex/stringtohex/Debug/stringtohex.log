@@ -1,0 +1,3 @@
+﻿  stringtohex.c
+C:\Users\조현지\Desktop\System-Programming\07_assembly-programming4_SIC\stringtohex\stringtohex\stringtohex.c(20,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  stringtohex.vcxproj -> C:\Users\조현지\Desktop\System-Programming\07_assembly-programming4_SIC\stringtohex\Debug\stringtohex.exe

@@ -1,0 +1,41 @@
+1000 test3    start   1000
+1000 first    stl     retadr
+1003          jsub    sum
+1006          lda     total
+1009          j       last
+100c retadr   resw    1
+100f sum      ldx     zero
+1012          lda     zero
+1015          sta     total
+1018          sta     index
+101b          sta     temp
+101e          add     table,x
+1021          sta     min
+1024 loop     ldx     index
+1027          lda     temp
+102a          add     table,x
+102d          comp    min
+1030          jgt     ignore
+1033          sta     min
+1036 ignore   lda     total
+1039          add     table,x
+103c          sta     total
+103f          lda     index
+1042          add     three
+1045          sta     index
+1048          comp    count
+104b          jlt     loop
+104e          rsub    
+1051 table    word    12
+1054          word    9
+1057          word    8
+105a          word    22
+105d          word    6
+1060 zero     word    0
+1063 three    word    3
+1066 count    word    15
+1069 total    resw    1
+106c index    resw    1
+106f min      resw    1
+1072 temp     resw    1
+1075 last     end     first

@@ -1,0 +1,12 @@
+add,18
+and,40
+comp,28
+lda,00
+sta,0C
+stl,14
+jsub,48
+j,3C
+ldx,04
+jgt,34
+jlt,38
+rsub,4C

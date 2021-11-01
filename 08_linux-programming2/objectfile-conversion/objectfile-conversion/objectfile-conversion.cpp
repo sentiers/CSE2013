@@ -43,7 +43,8 @@ int main() {
 			cout << "Tag = " << tag
 				<< ", Addr = " << addr
 				<< ", Length = " << length
-				<< ", Codes = ";
+				<< ", Codes = " << codes << endl;
+			cout << "-> ";
 			for (int i = 0; i < codes.length(); i++) {
 				a = codes.at(i);
 				if (!isdigit(a)) { // if it's not a digit, subtract 55
@@ -62,7 +63,7 @@ int main() {
 			addr = strline.substr(1, 6);
 			others = strline.substr(7);
 			cout << "Tag = " << tag
-				<< ", Addr = " << addr 
+				<< ", Addr = " << addr
 				<< ", Others = " << others << endl;
 		}
 	}

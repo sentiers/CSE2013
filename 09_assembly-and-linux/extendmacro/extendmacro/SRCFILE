@@ -1,0 +1,9 @@
+rdbuff   macro   &indev,&bufadr                                  
+         clear   x                                               
+         td      =x'&indev'                                      
+         jeq     *-3                                             
+         rd      =x'&indev'                                      
+         stch    &bufadr,x                                       
+         mend                                                    
+         rdbuff  f1,buffer                                       
+         rdbuff  f2,area                                         

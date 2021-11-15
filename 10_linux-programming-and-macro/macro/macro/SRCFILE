@@ -1,0 +1,16 @@
+RDBUFF   MACRO   &INDEV,&SECOND,&BUFADR                                 
+         CLEAR   X                                               
+         TD      =X'&INDEV'                                      
+         JEQ     *-3                                             
+         RD      =X'&INDEV'                                      
+         STCH    &BUFADR,X                                       
+         RD      =X'&SECOND'   
+$LOOP    TD      =X'&INDEV'                                      
+         JEQ     $LOOP                                           
+         RD      =X&BUFADR->1  
+         RD      =X&BUFADR->2
+         RD      =X&BUFADR->3  
+         MEND                                                    
+         RDBUFF  F1,HAHA,BUFFER                                       
+         RDBUFF  F2,HEHE,AREA                                         
+         RDBUFF  F3,,VOLUME             

@@ -37,6 +37,7 @@ int main() {
 	string label, opcode, operand;
 
 	ifstream fin;
+	ofstream fout;
 	string strline, str;
 	bool macroend = false;
 
@@ -70,11 +71,11 @@ int main() {
 			string opstr = operand;
 			while (opstr.find(",") != string::npos) {
 				string arg = opstr.substr(0, opstr.find(","));
-				ARGS.insert(make_pair(arg, arg));
+				ARGS.insert(make_pair(arg, ""));
 				opstr = opstr.substr(opstr.find(",") + 1);
 			}
 			string arg = opstr.substr(0, opstr.find(" "));
-			ARGS.insert(make_pair(arg, arg));
+			ARGS.insert(make_pair(arg, ""));
 			ARGTAB.push_back(ARGS); // ARGTAB
 
 			NAMTAB.insert(make_pair(label, NAMTAB.size())); // NAMETAB
@@ -170,11 +171,41 @@ int main() {
 	}
 	fin.close();
 
-	for (const auto& i : INTFILE) { // print instruction list
+	// ===== PRINT INTFILE ====================================
+	for (const auto& i : INTFILE) {
 		cout << setw(9) << left << i->getLabel()
 			<< setw(8) << left << i->getOpcode()
 			<< left << i->getOperand() << endl;
 	}
+
+	// ===== FOUT TO ARGTAB ====================================
+	fout.open("ARGTAB");
+	for (const auto& i : ARGTAB) {
+		for (auto j = i.begin(); j != i.end(); j++) {
+			fout << setw(10) << left << j->first
+				<< setw(5) << left << j->second << endl;
+		}
+	}
+	fout.close();
+
+	// ===== FOUT TO DEFTAB ====================================
+	fout.open("DEFTAB");
+	for (const auto& i : DEFTAB) {
+		for (const auto& j : i) {
+			fout << setw(9) << left << j->getLabel()
+				<< setw(8) << left << j->getOpcode()
+				<< left << j->getOperand() << endl;
+		}
+	}
+	fout.close();
+
+	// ===== FOUT TO NAMTAB ====================================
+	fout.open("NAMTAB");
+	for (auto i = NAMTAB.begin(); i != NAMTAB.end(); i++) {
+		fout << setw(10) << left << i->first
+			<< setw(5) << left << i->second << endl;
+	}
+	fout.close();
 
 	return 0;
 }

@@ -1,0 +1,4 @@
+LDA     3
+ADD     B
+MUL     2
+STA     6
